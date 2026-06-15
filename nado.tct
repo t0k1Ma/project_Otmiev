@@ -1,0 +1,27 @@
+from apps.users.models import User
+
+# Создаем первого заказчика
+User.objects.create_user(
+    username='customer1',
+    password='test12345',
+    email='customer1@test.com',
+    phone='+7 (999) 123-45-67',
+    city='Москва',
+    role='customer',
+    first_name='Иван',
+    last_name='Иванов'
+)
+
+# Создаем второго заказчика
+User.objects.create_user(
+    username='customer2',
+    password='test12345',
+    email='customer2@test.com',
+    phone='+7 (999) 111-22-33',
+    city='Санкт-Петербург',
+    role='customer',
+    first_name='Анна',
+    last_name='Петрова'
+)
+
+print('Заказчики созданы!')
