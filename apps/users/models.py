@@ -23,3 +23,40 @@ class User(AbstractUser):
     
     def __str__(self):
         return f"{self.username} ({self.get_role_display()})"
+
+
+
+class ExecutorProfile(models.Model):
+
+    #Профиль исполнителя
+
+    user = models.OneToOneField(
+        User, 
+        on_delete=models.CASCADE, 
+        related_name='executor_profile',
+        verbose_name='Пользователь'
+    )
+    
+    SPECIALIZATION_CHOICES = (
+        ('standard', 'Стандартная уборка'),
+        ('xim_cleaning', 'Химчистка коворов/диванов'),
+        ('after_repair', 'После ремонта'),
+        ('office', 'Офисная уборка'),
+    )
+    
+    specializations = models.JSONField(default=list,blank=True,verbose_name='Специализация',help_text='Список типов уборок, которые выполняет')
+    experience_years = models.IntegerField(default="Менее года",verbose_name='Опыт работы')
+    about = models.TextField(blank=True,verbose_name='О себе',help_text='Расскажите о своих преимуществах')
+    latitude = models.DecimalField(max_digits=9,decimal_places=6,blank=True,null=True,verbose_name='Широта')
+    longitude = models.DecimalField(max_digits=9,decimal_places=6,blank=True,null=True,verbose_name='Долгота')
+    rating = models.DecimalField(max_digits=3,decimal_places=2,default=0,verbose_name='Рейтинг')
+    total_orders = models.IntegerField(default=0,verbose_name='Выполнено заказов') 
+    created_at = models.DateTimeField(auto_now_add=True,verbose_name='Дата создания профиля')
+    updated_at = models.DateTimeField(auto_now=True,verbose_name='Дата обновления')
+    
+    class Meta:
+        verbose_name = 'Профиль исполнителя'
+        verbose_name_plural = 'Профили исполнителей'
+    
+    def __str__(self):
+        return f"Профиль {self.user.username} (рейтинг: {self.rating})"

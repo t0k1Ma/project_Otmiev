@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import User
+from .models import User, ExecutorProfile
 
 
 @admin.register(User)
@@ -18,3 +18,20 @@ class UserAdmin(admin.ModelAdmin):
     
     # Какие поля редактировать прямо в списке
     list_editable = ('role', 'city')
+
+@admin.register(ExecutorProfile)
+class ExecutorProfileAdmin(admin.ModelAdmin):
+
+    #Настройка отображения профилей исполнителей
+    
+    # Какие колонки показывать в списке
+    list_display = ('user', 'rating', 'experience_years', 'total_orders')
+    
+    # По каким полям фильтровать
+    list_filter = ('experience_years',)
+    
+    # По каким полям искать
+    search_fields = ('user__username', 'user__email')
+    
+    # Какие поля редактировать прямо в списке
+    list_editable = ('rating', 'experience_years')
