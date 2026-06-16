@@ -8,7 +8,7 @@ class UserAdmin(admin.ModelAdmin):
     #Настройка отображения пользователей в админке
 
     # Какие колонки показывать в списке
-    list_display = ('username', 'email', 'phone', 'city', 'role', 'created_at')
+    list_display = ('username', 'email', 'phone', 'city', 'role', 'created_at',)
     
     # По каким полям можно фильтровать
     list_filter = ('role', 'city', 'is_active')
