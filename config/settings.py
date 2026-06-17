@@ -38,10 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
-    'rest_framework',       # Для API
-    'corsheaders',          # Для разрешения запросов с фронтенда
-
-    # Наши приложения
+    'rest_framework',
+    'rest_framework.authtoken',
+    
     'apps.users',
     'apps.orders',
 ]
@@ -133,3 +132,12 @@ CORS_ALLOWED_ORIGINS = [
 
 
 AUTH_USER_MODEL = 'users.User'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ]
+}
