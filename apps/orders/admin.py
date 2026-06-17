@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django import forms
-from .models import Order, Payment
+from .models import Order, Payment, Review, OrderApplication
 from .constants import EXTRA_SERVICES_CATALOG
 
 
@@ -31,11 +31,11 @@ class OrderAdmin(admin.ModelAdmin):
     )
     
     list_filter = (
-        'status', 'cleaning_type', 'urgency', 'district', 'placement_tariff',
+        'status', 'cleaning_type', 'urgency', 'city', 'placement_tariff',
     )
     
     search_fields = (
-        'title', 'address', 'customer__username', 'customer__email', 'district',
+        'title', 'address', 'customer__username', 'customer__email', 'city',
     )
     
     list_editable = ('status',)
@@ -43,6 +43,7 @@ class OrderAdmin(admin.ModelAdmin):
     readonly_fields = (
         'price', 'urgency_fee', 'extra_services_total', 'total_price',
         'placement_price', 'created_at', 'updated_at', 'published_at',
+        'latitude', 'longitude'
     )
     
     fieldsets = (
@@ -54,9 +55,10 @@ class OrderAdmin(admin.ModelAdmin):
         }),
         ('Объект', {
             'fields': (
-                'area_sqm', 'rooms_count', 'address', 'district',
+                'area_sqm', 'rooms_count', 'address', 'city',
                 'latitude', 'longitude', 'scheduled_date',
-            )
+            ),
+            'description': 'Координаты заполняются автоматически по адресу'
         }),
         ('Цена', {
             'fields': (
@@ -81,7 +83,6 @@ class OrderAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         super().save_model(request, obj, form, change)
         
-        # Если выбран тариф и размещение еще не активировано
         if obj.placement_tariff and not obj.placement_paid_until:
             try:
                 obj.activate_placement(obj.placement_tariff)
@@ -100,7 +101,9 @@ class PaymentAdmin(admin.ModelAdmin):
         'amount', 'status', 'paid_until', 'created_at',
     )
     
-    list_filter = ('status', 'tariff', 'created_at')
+    list_filter = (
+        'status', 'tariff', 'created_at',
+    )
     
     search_fields = (
         'order__title', 'customer__username', 'customer__email',
@@ -111,3 +114,17 @@ class PaymentAdmin(admin.ModelAdmin):
     def get_queryset(self, request):
         queryset = super().get_queryset(request)
         return queryset.select_related('order', 'customer')
+    
+@admin.register(Review)
+class ReviewAdmin(admin.ModelAdmin):
+    list_display = ('id', 'order', 'customer', 'executor', 'rating', 'created_at')
+    list_filter = ('rating', 'created_at')
+    search_fields = ('order__title', 'customer__username', 'executor__username', 'comment')
+    readonly_fields = ('created_at',)
+
+@admin.register(OrderApplication)
+class OrderApplicationAdmin(admin.ModelAdmin):
+    list_display = ('id', 'order', 'executor', 'status', 'proposed_price', 'created_at')
+    list_filter = ('status', 'created_at')
+    search_fields = ('order__title', 'executor__username')
+    readonly_fields = ('created_at', 'reviewed_at')

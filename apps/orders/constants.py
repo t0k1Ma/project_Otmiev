@@ -1,33 +1,27 @@
 EXTRA_SERVICES_CATALOG = {
     'window_cleaning': {
         'name': 'Мытье окна',
-        'price': 500,
+        'price': 490,
         'unit': 'за 1 окно',
         'description': 'Мытье одного окна с двух сторон'
     },
     'sofa_cleaning': {
         'name': 'Химчистка дивана/ковра',
-        'price': 750,
+        'price': 990,
         'unit': 'за 1 штуку',
         'description': 'Химчистка одного дивана или ковра'
     },
     'fridge_cleaning': {
         'name': 'Мытье холодильника',
-        'price': 300,
+        'price': 299,
         'unit': 'за 1 штуку',
         'description': 'Полная мойка холодильника внутри и снаружи'
     },
     'oven_cleaning': {
         'name': 'Мытье духовки',
-        'price': 400,
+        'price': 399,
         'unit': 'за 1 штуку',
         'description': 'Чистка духового шкафа'
-    },
-    'balcony_cleaning': {
-        'name': 'Уборка балкона',
-        'price': 1000,
-        'unit': 'за балкон',
-        'description': 'Полная уборка балкона или лоджии'
     },
 }
 
