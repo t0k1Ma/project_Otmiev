@@ -7,7 +7,6 @@ class UserAdmin(admin.ModelAdmin):
 
     #Настройка отображения пользователей в админке
 
-    # Какие колонки показывать в списке
     list_display = ('username', 'email', 'phone', 'city', 'role', 'created_at',)
     
     # По каким полям можно фильтровать
@@ -24,7 +23,6 @@ class ExecutorProfileAdmin(admin.ModelAdmin):
 
     #Настройка отображения профилей исполнителей
     
-    # Какие колонки показывать в списке
     list_display = ('user', 'rating', 'experience_years', 'total_orders')
     
     # По каким полям фильтровать
