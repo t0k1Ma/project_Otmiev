@@ -351,16 +351,18 @@ body {
 
 .reviews-blob {
     position: absolute;
-    left: 50%;
+    left: -200px;
     top: 50%;
-    transform: translate(-50%, -50%);
-    width: 800px;
-    height: 800px;
-    background: radial-gradient(circle, rgba(118, 159, 205, 0.4) 0%, transparent 70%);
+    transform: translateY(-50%);
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(47, 144, 131, 0.44) 0%, transparent 70%);
     border-radius: 50%;
     filter: blur(20px);
-    z-index: 0;
+    opacity: 0.8;
+    z-index: 0; 
     pointer-events: none;
+    animation: blobPulse 3s ease-in-out infinite;
 }
 
 .reviews-title {
