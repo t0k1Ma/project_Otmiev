@@ -1,0 +1,227 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ОООтмыв - Клининговый сервис</title>
+    
+    <!-- Шрифт Alegreya Sans SC -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <!-- ШАПКА -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <img src="{% static 'images/OOOtmiev.jpg' %}" alt="ОООтмыв" class="logo-img">
+            </div>
+            
+            <div class="auth-buttons">
+                <a href="/api/users/login/" class="btn-auth">Вход</a>
+                <a href="/api/users/register/" class="btn-auth">Регистрация</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- СЕКЦИЯ 1: HERO -->
+    <section class="hero-section">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Клининговый<br>сервис
+                </h1>
+            </div>
+            <div class="hero-blob"></div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- СЕКЦИЯ 2: ПОЧЕМУ МЫ -->
+    <section class="why-section">
+        <div class="why-blob"></div>
+
+        <div class="container">
+            <h2 class="section-title">Почему заказывают<br>уборку через "ОООтмыв"</h2>
+            
+            <div class="cards-grid">
+                <!-- Карточка 1 -->
+                <div class="card-wrapper">
+                    <div class="card card-1">
+                        <div class="card-icon">
+                            <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+                                <path d="M30 15V45M15 30H45" stroke="#769FCD" stroke-width="3" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">Большой выбор</h3>
+                        <p class="card-text">Десятки проверенных клинеров в вашем городе</p>
+                    </div>
+                    <div class="stat-card stat-1">
+                        <div class="stat-number">&gt;50</div>
+                        <div class="stat-label">МАСТЕРОВ В БАЗЕ</div>
+                    </div>
+                </div>
+
+                <!-- Карточка 2 -->
+                <div class="card-wrapper">
+                    <div class="card card-2">
+                        <div class="card-icon">
+                            <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+                                <circle cx="30" cy="30" r="20" stroke="#769FCD" stroke-width="3"/>
+                                <text x="30" y="37" font-size="24" font-weight="bold" fill="#769FCD" text-anchor="middle">$</text>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">Цены от мастеров</h3>
+                        <p class="card-text">Вы сами выбираете мастера под ваши требования и бюджет</p>
+                    </div>
+                    <div class="stat-card stat-2">
+                        <div class="stat-number">4.8</div>
+                        <div class="stat-label">Средний рейтинг</div>
+                    </div>
+                </div>
+
+                <!-- Карточка 3 -->
+                <div class="card-wrapper">
+                    <div class="card card-3">
+                        <div class="card-icon">
+                            <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+                                <path d="M30 10L50 20V35C50 45 30 55 30 55C30 55 10 45 10 35V20L30 10Z" stroke="#fff" stroke-width="3" fill="none"/>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">Отзывы и рейтинг</h3>
+                        <p class="card-text">Реальные оценки от реальных клиентов</p>
+                    </div>
+                    <div class="stat-card stat-3">
+                        <div class="stat-number">&gt;500</div>
+                        <div class="stat-label">Заказов в месяц</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+        <!-- СЕКЦИЯ 3: КАК НАЙТИ МАСТЕРА -->
+    <section class="how-section">
+        <div class="container">
+            <h2 class="section-title">Как найти мастера через<br>наш сайт</h2>
+            
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-line"></div>
+                    <div class="step-text">Заполните анкету</div>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-line"></div>
+                    <div class="step-text">Мастера откликаются</div>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-line"></div>
+                    <div class="step-text">Выбирайте лучшего</div>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <div class="step-line"></div>
+                    <div class="step-text">Оставляйте отзывы</div>
+                </div>
+            </div>
+            
+            <div class="cta-button-wrapper">
+                <a href="/api/orders/create/" class="btn-cta">Заполнить заявку</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- СЕКЦИЯ 4: ОТЗЫВЫ -->
+    <section class="reviews-section">
+        <div class="reviews-blob"></div>
+        
+        <div class="container">
+            <h2 class="section-title reviews-title">Что говорят о нашем<br>сервисе</h2>
+            
+            <div class="reviews-grid">
+                <div class="review-card review-1">
+                    <div class="review-rating">⭐⭐⭐⭐⭐ 5.00</div>
+                    <p class="review-text">"Через ОООтмыв нашёл мастера за 2000 р, хотя в других местах просили 3500 р. Очень доволен сервисом"</p>
+                    <div class="review-author">— Дмитрий</div>
+                </div>
+                
+                <div class="review-card review-2">
+                    <div class="review-rating">⭐⭐⭐⭐⭐ 5.00</div>
+                    <p class="review-text">"Удобно, что можно выбирать сразу из нескольких клинеров. Выбрала девушку с рейтингом 5.0 — не прогодала"</p>
+                    <div class="review-author">— Алина</div>
+                </div>
+                
+                <div class="review-card review-3">
+                    <div class="review-rating">⭐⭐⭐⭐⭐ 5.00</div>
+                    <p class="review-text">"Сайтом удобно пользоваться. За 10 минут нашёл мастера на завтра. Единственное — хотелось бы больше фильтров"</p>
+                    <div class="review-author">— Сергей</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ФУТЕР -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-left">
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Услуги</a>
+                    <a href="#" class="footer-link">Генеральная уборка</a>
+                    <a href="#" class="footer-link">Обычная уборка</a>
+                </div>
+                
+                <div class="footer-contact">
+                    <div class="footer-city">Ростов-на-Дону</div>
+                    <div class="footer-phone">+7(999) 888-77-66</div>
+                    <div class="footer-hours">Ежедневно с 8:30 до 22:30</div>
+                </div>
+            </div>
+            
+            <div class="footer-center">
+                <div class="footer-info-links">
+                    <a href="#" class="footer-link">О нас</a>
+                    <a href="#" class="footer-link">Отзывы</a>
+                </div>
+                
+                <div class="footer-payment">
+                    <img src="{% static 'images/payment-icons.png' %}" alt="Оплата" class="payment-icons" onerror="this.style.display='none'">
+                </div>
+            </div>
+            
+            <div class="footer-right">
+                <div class="footer-legal">
+                    <p>Клининговый сервис в Ростове-на-Дону</p>
+                    <p>Исполнитель: ИП Якушев Владислав Артемович</p>
+                    <p>ИНН: 910208311302</p>
+                    <p>ОГРН: 323619600036601</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container">
+                <p>Начиная использовать Сервис, вы принимаете Пользовательское соглашение и даёте согласие на обработку персональных данных.</p>
+                <p>© ООО «Сервисные Системы» (2026) ОООтмыв®</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/animations.js' %}"></script>
+</body>
+</html>
