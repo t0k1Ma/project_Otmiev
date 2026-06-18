@@ -4,6 +4,7 @@ from rest_framework.authtoken.models import Token
 from django.contrib.auth import authenticate
 from .models import User, ExecutorProfile
 from .serializers import UserSerializer, RegisterSerializer, ExecutorProfileSerializer
+from django.shortcuts import render
 
 
 class RegisterView(generics.CreateAPIView):
@@ -52,3 +53,8 @@ class ExecutorProfileListView(generics.ListAPIView):
     
     def get_queryset(self):
         return ExecutorProfile.objects.all()
+ 
+    
+def login_view(request):
+    """Страница входа"""
+    return render(request, 'login.html')
