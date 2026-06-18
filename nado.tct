@@ -1,27 +1,14 @@
-from apps.users.models import User
+import requests
+import json
 
-# Создаем первого заказчика
-User.objects.create_user(
-    username='customer1',
-    password='test12345',
-    email='customer1@test.com',
-    phone='+7 (999) 123-45-67',
-    city='Москва',
-    role='customer',
-    first_name='Иван',
-    last_name='Иванов'
-)
+# Запрос откликов на заказ #3
+url = "http://127.0.0.1:8000/api/orders/3/applications/"
 
-# Создаем второго заказчика
-User.objects.create_user(
-    username='customer2',
-    password='test12345',
-    email='customer2@test.com',
-    phone='+7 (999) 111-22-33',
-    city='Санкт-Петербург',
-    role='customer',
-    first_name='Анна',
-    last_name='Петрова'
-)
+# Токен заказчика (вставь свой)
+headers = {
+    "Authorization": "Token 54f83d92b0464923fe8ecf016524738a4a2d0a22"
+}
 
-print('Заказчики созданы!')
+response = requests.get(url, headers=headers)
+
+print(json.dumps(response.json(), indent=2, ensure_ascii=False))

@@ -65,6 +65,7 @@ class MyOrdersView(generics.ListAPIView):
 class CompleteOrderView(generics.GenericAPIView):
     serializer_class = OrderSerializer
     permission_classes = [permissions.IsAuthenticated]
+    queryset = Order.objects.all()
     
     def post(self, request, pk):
         order = self.get_object()
@@ -140,6 +141,7 @@ class OrderApplicationCreateView(generics.CreateAPIView):
 class AcceptApplicationView(generics.GenericAPIView):
     serializer_class = OrderApplicationSerializer
     permission_classes = [permissions.IsAuthenticated]
+    queryset = OrderApplication.objects.all()
     
     def post(self, request, pk):
         application = self.get_object()

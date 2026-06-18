@@ -8,6 +8,7 @@ urlpatterns = [
     path('orders/<int:pk>/', views.OrderDetailView.as_view(), name='order-detail'),
     path('orders/<int:pk>/activate/', views.ActivatePlacementView.as_view(), name='activate-placement'),
     path('my-orders/', views.MyOrdersView.as_view(), name='my-orders'),
+    path('orders/<int:pk>/complete/', views.CompleteOrderView.as_view(), name='complete-order'),
 
     #Отклики
     path('orders/<int:order_id>/applications/', views.OrderApplicationListView.as_view(), name='order-applications'),
@@ -21,5 +22,4 @@ urlpatterns = [
     path('reviews/executor/<int:executor_id>/', views.ReviewListView.as_view(), name='executor-reviews'),
     path('my-reviews/', views.MyReviewsView.as_view(), name='my-reviews'),
 
-    
 ]
