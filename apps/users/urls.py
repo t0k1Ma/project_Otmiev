@@ -7,4 +7,6 @@ urlpatterns = [
     path('users/', views.UserListView.as_view(), name='user-list'),
     path('executors/', views.ExecutorProfileListView.as_view(), name='executor-list'),
     path('login/', views.login_view, name='login'),
+    path('check-username/', views.CheckUsernameView.as_view(), name='check-username'),
+    path('executor-profile/', views.ExecutorProfileView.as_view(), name='executor-profile'),
 ]

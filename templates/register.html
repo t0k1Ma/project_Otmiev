@@ -1,0 +1,155 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация - ОООтмыв</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+</head>
+<body>
+    <!-- ШАПКА -->
+    <header class="header-auth">
+        <div class="container">
+            <div class="logo">
+                <img src="{% static 'images/OOOtmiev.jpg' %}" alt="ОООтмыв" class="logo-img">
+            </div>
+        </div>
+    </header>
+
+    <!-- ФОРМА РЕГИСТРАЦИИ -->
+    <main class="auth-main">
+        <div class="auth-container register-container">
+            <h1 class="auth-title">Создайте аккаунт</h1>
+            
+            <!-- Переключатель роли -->
+            <div class="role-selector">
+                <button type="button" class="role-btn active" data-role="customer">Заказчик</button>
+                <button type="button" class="role-btn" data-role="executor">Исполнитель</button>
+            </div>
+            
+            <form class="auth-form register-form" id="registerForm">
+                <div class="form-group">
+                    <label class="form-label" for="username">Логин</label>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        name="username" 
+                        class="form-input"
+                        placeholder="Придумайте логин"
+                        required
+                    >
+                    <span class="error-message" id="usernameError"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="phone">Телефон</label>
+                    <input 
+                        type="tel" 
+                        id="phone" 
+                        name="phone" 
+                        class="form-input"
+                        placeholder="+7 (999) 123-45-67"
+                        required
+                    >
+                    <span class="error-message" id="phoneError"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="email">Email</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        class="form-input"
+                        placeholder="example@mail.com"
+                        required
+                    >
+                    <span class="error-message" id="emailError"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="password">Пароль</label>
+                    <div class="password-wrapper">
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            class="form-input password-input"
+                            placeholder="Придумайте пароль"
+                            required
+                        >
+                        <button type="button" class="toggle-password" id="togglePassword">
+                            <svg class="eye-icon eye-open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                            <svg class="eye-icon eye-closed" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+                                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                                <line x1="1" y1="1" x2="23" y2="23"></line>
+                            </svg>
+                        </button>
+                    </div>
+                    <span class="error-message" id="passwordError"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="password_confirm">Повторите пароль</label>
+                    <div class="password-wrapper">
+                        <input 
+                            type="password" 
+                            id="password_confirm" 
+                            name="password_confirm" 
+                            class="form-input password-input"
+                            placeholder="Повторите пароль"
+                            required
+                        >
+                        <button type="button" class="toggle-password" id="togglePasswordConfirm">
+                            <svg class="eye-icon eye-open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                            <svg class="eye-icon eye-closed" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+                                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                                <line x1="1" y1="1" x2="23" y2="23"></line>
+                            </svg>
+                        </button>
+                    </div>
+                    <span class="error-message" id="passwordConfirmError"></span>
+                </div>
+                
+                <div class="form-agreement">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="agree" class="checkbox" required>
+                        <span>Я соглашаюсь с <a href="/rules/" class="rules-link">правилами сайта</a></span>
+                    </label>
+                </div>
+                
+                <button type="submit" class="btn-register-submit">Зарегистрироваться</button>
+            </form>
+            
+            <div class="auth-footer">
+                <span class="has-account">Уже есть аккаунт?</span>
+                <a href="/login/" class="login-link">Войти</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- ФУТЕР -->
+``  <footer class="footer">
+        <div class="footer-bottom">
+            <div class="container">
+                <p>Начиная использовать Сервис, вы принимаете Пользовательское соглашение и даёте согласие на обработку персональных данных.</p>
+                <p>© ООО «Сервисные Системы» (2016-2026) Братья Чистовы ®</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/register.js' %}"></script>
+</body>
+</html>

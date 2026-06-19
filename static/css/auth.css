@@ -1,0 +1,595 @@
+/* ШАПКА ДЛЯ AUTH СТРАНИЦ */
+.header-auth {
+    background-color: #fff;
+    padding: 30px 0;
+    border-bottom: 1px solid #F7FBFC;
+}
+
+.header-auth .logo-img {
+    height: 60px;
+    width: auto;
+}
+
+/* ОСНОВНОЙ КОНТЕНТ AUTH */
+.auth-main {
+    min-height: calc(100vh - 300px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 20px 60px;
+    background-color: #fff;
+}
+
+.auth-container {
+    max-width: 450px;
+    width: 100%;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.auth-title {
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 50px;
+    color: #000;
+}
+
+/* ФОРМА */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    
+}
+
+.form-label {
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: #000;
+    text-align: center;
+    
+}
+
+.form-input {
+    width: 331px;
+    height: 72px;
+    padding: 0 25px;
+    background-color: transparent;
+    border: 2px solid #000;
+    border-radius: 40px;
+    font-size: 18px;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.form-input:focus {
+    border-color: #769FCD;
+    box-shadow: 0 4px 15px rgba(118, 159, 205, 0.3);
+    transform: translateY(-2px);
+}
+
+.form-input::placeholder {
+    color: #999;
+}
+
+/* ОПЦИИ ФОРМЫ */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+    justify-content: center;
+    gap: 40px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+}
+
+.checkbox {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.forgot-link {
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 16px;
+    color: #769FCD;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.forgot-link:hover {
+    color: #5a8ab8;
+    text-decoration: underline;
+}
+
+/* КНОПКА ВХОДА */
+.btn-login-submit {
+    width: 385px;
+    padding: 18px;
+    background-color: #769FCD;
+    color: #fff;
+    border: none;
+    border-radius: 40px;
+    font-size: 36px;
+    font-weight: 700;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(118, 159, 205, 0.4);
+    margin-top: 15px;
+}
+
+.btn-login-submit:hover {
+    background-color: #5a8ab8;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(118, 159, 205, 0.6);
+}
+
+.btn-login-submit:active {
+    transform: translateY(0);
+}
+
+/* Обертка для поля пароля */
+.password-wrapper {
+    position: relative;
+    width: 385px;
+    display: flex;
+    align-items: center;
+}
+
+.password-input {
+    padding-right: 60px !important; /* Место для кнопки */
+}
+
+/* Кнопка показа пароля */
+.toggle-password {
+    position: absolute;
+    right: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    transition: color 0.3s ease;
+    z-index: 2;
+}
+
+.toggle-password:hover {
+    color: #769FCD;
+}
+
+.eye-icon {
+    width: 24px;
+    height: 24px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .password-wrapper {
+        width: 100%;
+        max-width: 331px;
+    }
+}
+
+/* ФУТЕР AUTH */
+.auth-footer {
+    text-align: center;
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.no-account {
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 18px;
+    color: #333;
+}
+
+.register-link {
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 18px;
+    color: #769FCD;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.register-link:hover {
+    color: #5a8ab8;
+    text-decoration: underline;
+}
+
+/* ПЕРЕКЛЮЧАТЕЛЬ РОЛИ */
+.role-selector {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.role-btn {
+    background: none;
+    border: none;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 31px;
+    font-weight: 500;
+    color: #999;
+    cursor: pointer;
+    padding: 10px 20px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+/* Подчёркивание */
+.role-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background-color: #769FCD;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.role-btn.active {
+    color: #000;
+}
+
+.role-btn.active::after {
+    width: 100%;
+}
+
+.role-btn:hover {
+    color: #000;
+}
+
+/* Анимация при переключении */
+@keyframes slideUnderline {
+    from {
+        width: 0;
+        opacity: 0;
+    }
+    to {
+        width: 100%;
+        opacity: 1;
+    }
+}
+
+.role-btn.active::after {
+    animation: slideUnderline 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* ФУТЕР - ОБНОВЛЕННЫЙ */
+.footer {
+    background-color: #F7FBFC;
+    padding: 0px 0 40px;
+    margin-top: 100px;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+    gap: 60px;
+    margin-bottom: 60px;
+}
+
+.footer-left, .footer-center, .footer-right {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.footer-links, .footer-info-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.footer-link {
+    font-family: 'Alegreya Sans SC', sans-serif;
+    color: #333;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+    color: #769FCD;
+}
+
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-city {
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #000;
+}
+
+.footer-phone {
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #000;
+}
+
+.footer-hours {
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 16px;
+    color: #666;
+}
+
+.footer-legal {
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.8;
+}
+
+.footer-legal p {
+    margin-bottom: 5px;
+}
+
+.footer-bottom {
+    border-top: 1px solid #ddd;
+    padding-top: 30px;
+    text-align: center;
+}
+
+.footer-bottom p {
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+/* АНИМАЦИИ */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* АДАПТИВНОСТЬ */
+@media (max-width: 1024px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .auth-title {
+        font-size: 36px;
+    }
+    
+    .form-input {
+        width: 100%;
+        max-width: 331px;
+    }
+    
+    .btn-login-submit {
+        font-size: 28px;
+    }
+    
+    .form-options {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+}
+
+
+
+/* КОНТЕЙНЕР РЕГИСТРАЦИИ */
+.register-container {
+    max-width: 500px;
+}
+
+/* ПЕРЕКЛЮЧАТЕЛЬ РОЛИ */
+.role-selector {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.role-btn {
+    background: none;
+    border: none;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 31px;
+    font-weight: 500;
+    color: #999;
+    cursor: pointer;
+    padding: 10px 20px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.role-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background-color: #769FCD;
+    transition: width 0.3s ease;
+}
+
+.role-btn.active {
+    color: #000;
+}
+
+.role-btn.active::after {
+    width: 100%;
+}
+
+.role-btn:hover {
+    color: #000;
+}
+
+/* ФОРМА РЕГИСТРАЦИИ */
+.register-form {
+    gap: 20px;
+}
+
+/* СООБЩЕНИЯ ОБ ОШИБКАХ */
+.error-message {
+    display: block;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 14px;
+    color: #e74c3c;
+    margin-top: 5px;
+    min-height: 20px;
+    text-align: center;
+}
+
+.error-message.success {
+    color: #27ae60;
+}
+
+/* СОГЛАШЕНИЕ */
+.form-agreement {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+}
+
+.rules-link {
+    color: #769FCD;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.rules-link:hover {
+    color: #5a8ab8;
+    text-decoration: underline;
+}
+
+/* КНОПКА РЕГИСТРАЦИИ */
+.btn-register-submit {
+    width: 385px;
+    padding: 18px;
+    background-color: #769FCD;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 36px;
+    font-weight: 700;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(118, 159, 205, 0.4);
+    margin-top: 15px;
+}
+
+.btn-register-submit:hover {
+    background-color: #5a8ab8;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(118, 159, 205, 0.6);
+}
+
+.btn-register-submit:active {
+    transform: translateY(0);
+}
+
+/* ФУТЕР ФОРМЫ */
+.auth-footer {
+    text-align: center;
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.has-account {
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 18px;
+    color: #333;
+}
+
+.login-link {
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 18px;
+    color: #769FCD;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.login-link:hover {
+    color: #5a8ab8;
+    text-decoration: underline;
+}
+
+/* АДАПТИВНОСТЬ */
+@media (max-width: 768px) {
+    .role-selector {
+        gap: 20px;
+    }
+    
+    .role-btn {
+        font-size: 24px;
+    }
+    
+    .btn-register-submit {
+        width: 100%;
+        max-width: 385px;
+        font-size: 28px;
+    }
+}
