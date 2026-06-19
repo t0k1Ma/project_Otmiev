@@ -217,12 +217,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log('Ответ сервера:', data);
                 
                 if (response.ok && data.token) {
+                    // Сохраняем токен
                     localStorage.setItem('auth_token', data.token);
-                    localStorage.setItem('user_role', selectedRole);
                     
-                    alert('Регистрация успешна!');
-                    window.location.href = '/';
+                    // Сохраняем роль (берем из ответа сервера, чтобы быть уверенным)
+                    localStorage.setItem('user_role', data.user.role);
+
+                    // ЛОГИКА РЕДИРЕКТА
+                    if (data.user.role === 'executor') {
+                        // Если Исполнитель -> ведем на профиль
+                        window.location.href = '/executor-profile/';
+                    } else {
+                        // Если Заказчик -> ведем на главную
+                        window.location.href = '/';
+                    }
                 } else {
+                    // ... остальной код обработки ошибок
                     alert('Ошибка регистрации: ' + (data.error || JSON.stringify(data)));
                     submitBtn.textContent = originalText;
                     submitBtn.disabled = false;

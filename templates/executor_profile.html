@@ -1,0 +1,164 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль исполнителя - ОООтмыв</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+</head>
+<body>
+    <!-- ШАПКА -->
+    <header class="header-profile">
+        <div class="container header-profile-container">
+            <div class="logo">
+                <img src="{% static 'images/OOOtmiev2.jpg' %}" alt="ОООтмыв" class="logo-img">
+            </div>
+            <div class="header-buttons">
+                <button type="button" class="btn-logout-top" id="logoutBtn">Выйти из профиля</button>
+                <a href="/" class="btn-home">На Главную</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <main class="profile-main">
+        <div class="container profile-container">
+            <!-- ЛЕВАЯ КОЛОНКА -->
+            <div class="profile-left">
+                <div class="avatar-wrapper">
+                    <div class="avatar-blob"></div>
+                    <div class="avatar-container">
+                        <img id="avatarImg" src="{% static 'images/default-avatar.png' %}" alt="Аватар" class="avatar" style="display: none;">
+                        <div id="avatarPlaceholder" class="avatar-placeholder">
+                            <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+                                <circle cx="40" cy="30" r="15" stroke="#769FCD" stroke-width="3"/>
+                                <path d="M15 65C15 50 25 45 40 45C55 45 65 50 65 65" stroke="#769FCD" stroke-width="3"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <label for="avatarInput" class="btn-upload-avatar">
+                        Загрузить
+                        <input type="file" id="avatarInput" accept="image/*" style="display: none;">
+                    </label>
+                </div>
+                
+                <div class="rating-display">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <div class="rating-value" id="ratingValue">5.00</div>
+                </div>
+            </div>
+
+            <!-- ПРАВАЯ КОЛОНКА -->
+            <div class="profile-right">
+                <form id="profileForm" class="profile-form">
+                    <!-- Имя -->
+                    <div class="form-group">
+                        <label class="form-label">Имя</label>
+                        <input type="text" id="firstName" class="form-input input-large" placeholder="Введите имя">
+                    </div>
+
+                    <!-- Фамилия -->
+                    <div class="form-group">
+                        <label class="form-label">Фамилия</label>
+                        <input type="text" id="lastName" class="form-input input-large" placeholder="Введите фамилию">
+                    </div>
+
+                    <!-- Типы уборки -->
+                    <div class="form-group">
+                        <label class="form-label">Типы уборки</label>
+                        <div class="checkbox-group-horizontal">
+                            <label class="checkbox-custom-horizontal">
+                                <input type="checkbox" name="cleaning_type" value="gen">
+                                <span class="checkbox-text">Ген.Уборка</span>
+                            </label>
+                            <label class="checkbox-custom-horizontal">
+                                <input type="checkbox" name="cleaning_type" value="standard">
+                                <span class="checkbox-text">Стандарт</span>
+                            </label>
+                            <label class="checkbox-custom-horizontal">
+                                <input type="checkbox" name="cleaning_type" value="repair">
+                                <span class="checkbox-text">После ремонта</span>
+                            </label>
+                            <label class="checkbox-custom-horizontal">
+                                <input type="checkbox" name="cleaning_type" value="office">
+                                <span class="checkbox-text">В офисе</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Опыт -->
+                    <div class="form-group">
+                        <label class="form-label">Опыт</label>
+                        <input type="text" id="experience" class="form-input input-rounded" placeholder="Например: 3 года">
+                    </div>
+
+                    <!-- О себе -->
+                    <div class="form-group">
+                        <label class="form-label">О себе</label>
+                        <textarea id="about" class="form-input textarea-profile" placeholder="Расскажите о себе..."></textarea>
+                    </div>
+
+                    <!-- Телефон -->
+                    <div class="form-group">
+                        <label class="form-label">Номер телефона</label>
+                        <input type="text" id="phone" class="form-input" readonly>
+                    </div>
+
+                    <!-- Город и Адрес -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Город</label>
+                            <input type="text" id="city" class="form-input" placeholder="Город">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Адрес</label>
+                            <input type="text" id="address" class="form-input" placeholder="Адрес для расчета координат">
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" id="email" class="form-input" placeholder="example@mail.com">
+                    </div>
+
+                    <!-- Кол-во заказов -->
+                    <div class="form-group">
+                        <label class="form-label">Кол-во выполненных заказов</label>
+                        <input type="text" id="totalOrders" class="form-input" readonly>
+                    </div>
+
+                    <!-- Кнопка сохранения -->
+                    <button type="submit" class="btn-save">Сохранить</button>
+                </form>
+
+                <!-- Отзывы -->
+                <div class="reviews-section" id="reviewsSection" style="display: none;">
+                    <h2 class="reviews-title">Отзывы</h2>
+                    <div class="reviews-carousel" id="reviewsCarousel">
+                        <!-- Карточки отзывов будут здесь -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ФУТЕР -->
+    <footer class="footer">        
+        <div class="footer-bottom">
+            <div class="container">
+                <p>Начиная использовать Сервис, вы принимаете Пользовательское соглашение и даёте согласие на обработку персональных данных.</p>
+                <p>© ООО «Сервисные Системы» (2026) ОООтмыв®</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/executor_profile.js' %}"></script>
+</body>
+</html>

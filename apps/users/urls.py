@@ -9,4 +9,5 @@ urlpatterns = [
     path('login/', views.login_view, name='login'),
     path('check-username/', views.CheckUsernameView.as_view(), name='check-username'),
     path('executor-profile/', views.ExecutorProfileView.as_view(), name='executor-profile'),
+    path('upload-avatar/', views.UploadAvatarView.as_view(), name='upload-avatar'),
 ]

@@ -7,6 +7,7 @@ from .serializers import UserSerializer, RegisterSerializer, ExecutorProfileSeri
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.parsers import MultiPartParser, FormParser
 
 
 class RegisterView(generics.CreateAPIView):
@@ -72,7 +73,7 @@ def login_view(request):
 
 
 class ExecutorProfileView(APIView):
-    """Получить профиль исполнителя"""
+    """Получение и обновление профиля исполнителя"""
     permission_classes = [IsAuthenticated]
     
     def get(self, request):
@@ -80,10 +81,66 @@ class ExecutorProfileView(APIView):
         if request.user.role != 'executor':
             return Response({'error': 'Доступ запрещен'}, status=403)
         
-        # Получаем профиль
-        try:
-            profile = request.user.executor_profile
-            serializer = ExecutorProfileSerializer(profile)
+        # Получаем или создаём профиль
+        profile, created = ExecutorProfile.objects.get_or_create(user=request.user)
+        
+        serializer = ExecutorProfileSerializer(profile)
+        return Response(serializer.data)
+    
+    def put(self, request):
+        if request.user.role != 'executor':
+            return Response({'error': 'Доступ запрещен'}, status=403)
+        
+        profile, created = ExecutorProfile.objects.get_or_create(user=request.user)
+        
+        # Обновляем данные пользователя (включая avatar если есть)
+        if 'first_name' in request.data:
+            request.user.first_name = request.data['first_name']
+        if 'last_name' in request.data:
+            request.user.last_name = request.data['last_name']
+        if 'city' in request.data:
+            request.user.city = request.data['city']
+        if 'email' in request.data:
+            request.user.email = request.data['email']
+        # avatar НЕ передаём через этот endpoint - только через upload-avatar/
+        request.user.save()
+        
+        # Подготавливаем данные для профиля (исключаем поля пользователя)
+        profile_data = {}
+        for field in ['specializations', 'experience_years', 'about', 'address']:
+            if field in request.data:
+                profile_data[field] = request.data[field]
+        
+        # Обновляем профиль
+        serializer = ExecutorProfileSerializer(profile, data=profile_data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
             return Response(serializer.data)
-        except ExecutorProfile.DoesNotExist:
-            return Response({'error': 'Профиль не найден'}, status=404)
+        
+        return Response(serializer.errors, status=400)
+    
+class UploadAvatarView(APIView):
+    """Загрузка аватара пользователя"""
+    permission_classes = [IsAuthenticated]
+    parser_classes = (MultiPartParser, FormParser)
+    
+    def post(self, request):
+        user = request.user
+        
+        # Получаем файл из запросса
+        if 'avatar' not in request.FILES:
+            return Response({'error': 'Файл не найден'}, status=400)
+        
+        # Удаляем старый аватар если есть
+        if user.avatar:
+            user.avatar.delete()
+        
+        # Сохраняем новый аватар
+        user.avatar = request.FILES['avatar']
+        user.save()
+        
+        # Возвращаем URL аватара
+        return Response({
+            'avatar_url': request.build_absolute_uri(user.avatar.url),
+            'message': 'Аватар загружен'
+        })

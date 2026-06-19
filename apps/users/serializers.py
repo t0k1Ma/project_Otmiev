@@ -3,9 +3,19 @@ from .models import User, ExecutorProfile
 
 
 class UserSerializer(serializers.ModelSerializer):
+    avatar = serializers.SerializerMethodField()
+    
     class Meta:
         model = User
-        fields = ['id', 'username', 'email', 'phone', 'city', 'role', 'first_name', 'last_name']
+        fields = ['id', 'username', 'email', 'phone', 'city', 'role', 'first_name', 'last_name', 'avatar']
+    
+    def get_avatar(self, obj):
+        if obj.avatar and hasattr(obj.avatar, 'url'):
+            request = self.context.get('request')
+            if request:
+                return request.build_absolute_uri(obj.avatar.url)
+            return obj.avatar.url
+        return None
 
 
 class RegisterSerializer(serializers.ModelSerializer):
@@ -43,4 +53,4 @@ class ExecutorProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = ExecutorProfile
         fields = ['id', 'user', 'specializations', 'experience_years', 'about',
-                  'latitude', 'longitude', 'rating', 'total_orders']
+                  'latitude', 'longitude', 'rating', 'total_orders', 'address']
